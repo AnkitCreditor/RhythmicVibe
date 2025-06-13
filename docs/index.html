@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RhythmicVibe</title>
+  <link rel="stylesheet" href="style.css" />
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
+
+</head>
+<body>
+  <!-- Custom Cursor -->
+  <div class="cursor"></div>
+
+
+    <!-- 🔥 NAVBAR -->
+    <nav class="navbar">
+    <div class="logo">🎵 RhythmicVibe</div>
+
+    <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+    </div>
+
+    <ul class="nav-links" id="navLinks">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#artists">Artists</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#newsletter">Contact</a></li>
+    </ul>
+    </nav>
+
+
+  <!-- 🎧 HERO SLIDESHOW -->
+    <section class="hero" id="hero">
+    <div class="slides">
+        <div class="slide active" style="background-image: url('assets/hero1.jpg');"></div>
+        <div class="slide" style="background-image: url('assets/hero2.jpg');"></div>
+        <div class="slide" style="background-image: url('assets/hero3.jpg');"></div>
+        <div class="slide" style="background-image: url('assets/hero4.jpg');"></div>
+    </div>
+
+    <!-- 🔥 Overlay -->
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+        <h1>Feel the Beat, Live the Rhythm</h1>
+        <p>Discover new music, experience live performances, and connect with artists in an unforgettable way.</p>
+        <button class="btn-cta">Enter the Vibe</button>
+    </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+    <div class="about-container">
+        <div class="about-text">
+        <h2>🎙️ About RhythmicVibe</h2>
+        <p>
+            At <strong>RhythmicVibe</strong>, we craft sounds that move the soul. Our studio is a creative sanctuary where talent meets technology.
+            Whether it's <span class="highlight">recording</span>, <span class="highlight">mixing</span>, <span class="highlight">mastering</span>, or full album production — we bring the vibe to life.
+        </p>
+        <p>
+            With a passionate team of producers, sound engineers, and artists, we don't just make music — we create experiences.
+            Dive into a world where beats breathe and melodies speak. 🎼
+        </p>
+        <a href="#newsletter" class="btn-about">Let’s Collaborate</a>
+        </div>
+
+        <div class="about-image">
+        <img src="assets/aboutmusic.jpg" alt="Music Studio" />
+        </div>
+    </div>
+    </section>
+
+    <!--Services-->
+    <section id="services" class="services-section">
+    <h2 class="section-title">🎧 Our Services</h2>
+    <p class="section-subtitle">Everything you need to fuel your music journey</p>
+
+    <div class="services-grid">
+        <!-- Service 1 -->
+        <div class="service-card">
+        <img src="assets/service1.jpg" alt="Recording Studio" />
+        <h3>Recording Studio</h3>
+        <p>Top-tier acoustic rooms, professional equipment & sound engineers to bring your sound to life.</p>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="service-card">
+        <img src="assets/service2.jpg" alt="Music Video Shoot" />
+        <h3>Music Video Shoot</h3>
+        <p>Visual storytelling with cinematic shoots, creative direction, and post-production magic.</p>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="service-card">
+        <img src="assets/service3.jpg" alt="Concerts Arrangement" />
+        <h3>Concerts Arrangement</h3>
+        <p>We organize immersive live shows and music festivals that leave the crowd wanting more.</p>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="service-card">
+        <img src="assets/service4.jpg" alt="Merchandise" />
+        <h3>Merchandise</h3>
+        <p>Shop exclusive RhythmicVibe merch — T-shirts, caps, hoodies and more with your vibe on it.</p>
+        </div>
+    </div>
+    </section>
+
+    <!-- 🎶 MUSIC GENRES -->
+
+
+    <!-- 🎤 FEATURED ARTISTS -->
+    <section class="artists-section" id="artists">
+    <h2 class="section-title">🎤 Featured Artists</h2>
+
+    <div class="artist-grid">
+        <!-- Artist Card -->
+        <div class="artist-card" data-artist="billie">
+        <img src="assets/singer1.jpg" alt="Billie Eilish" />
+        <div class="artist-info">
+            <h3>Billie Eilish</h3>
+            <p>Alternative | Pop</p>
+            <button class="preview-btn" data-audio="billie-audio">▶ Play Preview</button>
+            <audio id="billie-audio" class="preview-audio" hidden>
+            <source src="assets/preview1.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+        </div>
+
+        <div class="artist-card" data-artist="eminem">
+        <img src="assets/singer3.jpg" alt="Eminem" />
+        <div class="artist-info">
+            <h3>Eminem</h3>
+            <p>Hip-Hop | Rap</p>
+            <button class="preview-btn" data-audio="eminem-audio">▶ Play Preview</button>
+            <audio id="eminem-audio" class="preview-audio" hidden>
+            <source src="assets/preview3.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+        </div>
+
+        <div class="artist-card" data-artist="taylor">
+        <img src="assets/singer2.jpg" alt="Taylor Swift" />
+        <div class="artist-info">
+            <h3>Taylor Swift</h3>
+            <p>Pop | Indie | Country</p>
+            <button class="preview-btn" data-audio="taylor-audio">▶ Play Preview</button>
+            <audio id="taylor-audio" class="preview-audio" hidden>
+            <source src="assets/preview2.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- 🎬 MODAL POPUP -->
+    <div id="artist-modal" class="artist-modal hidden">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <img id="modal-img" src="" alt="Artist" />
+        <h3 id="modal-name"></h3>
+        <p id="modal-genre"></p>
+        <p id="modal-bio"></p>
+        <div class="modal-links">
+        <a id="modal-link" href="#" target="_blank">Visit Profile</a>
+        </div>
+    </div>
+    </div>
+
+    <!-- 🎥 MUSIC VIDEO GALLERY -->
+    <section class="video-gallery-section" id="gallery">
+    <h2 class="section-title">🎬 Music Video Gallery</h2>
+
+    <div class="video-grid">
+        <!-- Video 1 -->
+        <div class="video-card">
+        <iframe src="https://www.youtube.com/embed/watch?v=V9PVRfjEBT" title="Billie Eilish - bad guy" frameborder="0" allowfullscreen></iframe>
+        <h3>Billie Eilish - bad guy</h3>
+        </div>
+
+        <!-- Video 2 -->
+        <div class="video-card">
+        <iframe src="https://www.youtube.com/embed/9dcVOmEQzKA" title="Eminem - Rap God" frameborder="0" allowfullscreen></iframe>
+        <h3>Eminem - Rap God</h3>
+        </div>
+
+        <!-- Video 3 -->
+        <div class="video-card">
+        <iframe src="https://www.youtube.com/embed/tCXGJQYZ9JA" title="Taylor Swift - Delicate" frameborder="0" allowfullscreen></iframe>
+        <h3>Taylor Swift - Delicate</h3>
+        </div>
+    </div>
+    </section>
+
+    <!-- 🎫 UPCOMING EVENTS -->
+    <section class="events-section" id="events">
+    <div class="events-banner">
+        <h2 class="section-title">🎤 Upcoming Live Events</h2>
+    </div>
+
+    <!-- 🚨 TICKETS AVAILABLE MARQUEE -->
+    <div class="tickets-marquee">
+    <marquee behavior="scroll" direction="left" scrollamount="10">
+        🎟️ TICKETS AVAILABLE NOW — BOOK YOUR SEAT BEFORE THEY SELL OUT 🎶 | 🎤 VIP PASSES LIMITED | ⚡ BUY NOW, DANCE LATER! 🎧
+    </marquee>
+    </div>
+
+    <div class="events-grid">
+    <!-- 🎤 Event 1 -->
+    <div class="event-card visible">
+        <!-- Left: Info -->
+        <div class="event-info">
+        <div class="event-date">JUN 30</div>
+        <h3>Live with Billie Eilish</h3>
+        <p>New York City, Madison Square Garden</p>
+        <a href="#" class="btn-event">Book Now</a>
+        </div>
+        <!-- Right: Image -->
+        <div class="event-image">
+        <img src="assets/venue1.jpg" alt="Venue 1">
+        <span class="event-label hot">🔥 HOT</span>
+        </div>
+    </div>
+
+    <!-- 🎤 Event 2 -->
+    <div class="event-card visible">
+        <div class="event-info">
+        <div class="event-date">JUL 12</div>
+        <h3>Eminem East Coast Tour</h3>
+        <p>Boston Arena, MA</p>
+        <a href="#" class="btn-event">Book Now</a>
+        </div>
+        <div class="event-image">
+        <img src="assets/venue1.jpg" alt="Venue 2">
+        <span class="event-label sold-out">🟥 SOLD OUT</span>
+        </div>
+    </div>
+
+    <!-- 🎤 Event 3 -->
+    <div class="event-card visible">
+        <div class="event-info">
+        <div class="event-date">AUG 05</div>
+        <h3>Taylor Swift Eras Night</h3>
+        <p>Los Angeles, SoFi Stadium</p>
+        <a href="#" class="btn-event">Book Now</a>
+        </div>
+        <div class="event-image">
+        <img src="assets/venue1.jpg" alt="Venue 3">
+        <span class="event-label new">🆕 NEW</span>
+        </div>
+    </div>
+    </div>
+    </section>
+
+    <section class="merch-store" id="merch">
+  <h2 class="section-title">🎁 Official Merchandise</h2>
+  <div class="merch-grid">
+    
+    <!-- 🧥 Item 1 -->
+    <div class="merch-card">
+      <img src="assets/merch.png" alt="Billie Eilish Hoodie">
+      <div class="merch-info">
+        <h3>Billie Eilish Hoodie</h3>
+        <p>$49.99</p>
+        <a href="#" class="btn-buy">Buy Now</a>
+      </div>
+      <span class="merch-tag hot">🔥 HOT</span>
+    </div>
+
+    <!-- 🧢 Item 2 -->
+    <div class="merch-card">
+      <img src="assets/merch.png" alt="Eminem Cap">
+      <div class="merch-info">
+        <h3>Eminem Cap</h3>
+        <p>$24.99</p>
+        <a href="#" class="btn-buy">Buy Now</a>
+      </div>
+      <span class="merch-tag limited">⚡ LIMITED</span>
+    </div>
+
+    <!-- 👕 Item 3 -->
+    <div class="merch-card">
+      <img src="assets/merch.png" alt="Taylor Swift T-Shirt">
+      <div class="merch-info">
+        <h3>Taylor Swift T-Shirt</h3>
+        <p>$34.99</p>
+        <a href="#" class="btn-buy">Buy Now</a>
+      </div>
+      <span class="merch-tag new">🆕 NEW</span>
+    </div>
+
+  </div>
+</section>
+
+    <!--Fan Wall-->
+    <section class="fan-wall" id="fans">
+    <h2 class="section-title">📸 Fan Wall</h2>
+    <div class="fan-gallery">
+        
+        <div class="fan-card">
+        <img src="assets/fan.jpg" alt="Fan 1">
+        <div class="fan-overlay">
+            <h4>@swiftie_bae</h4>
+            <p>Eras Tour, LA</p>
+        </div>
+        </div>
+
+        <div class="fan-card">
+        <img src="assets/fan2.jpg" alt="Fan 2">
+        <div class="fan-overlay">
+            <h4>@emfan420</h4>
+            <p>Marshall Madness</p>
+        </div>
+        </div>
+
+        <div class="fan-card">
+        <img src="assets/fan3.jpg" alt="Fan 3">
+        <div class="fan-overlay">
+            <h4>@billie_universe</h4>
+            <p>Bad Guy Live 🔥</p>
+        </div>
+        </div>
+
+        <!-- More cards can be added here -->
+    </div>
+    </section>
+
+    <section class="latest-releases" id="releases">
+    <h2 class="section-title">🎧 Latest Music Releases</h2>
+    <div class="release-grid">
+
+        <!-- Track 1 - Billie Eilish -->
+        <div class="release-card">
+        <img src="assets/newsinger1.jpg" alt="Billie Eilish - Neon Silence">
+        <div class="release-info">
+            <h3>Neon Silence</h3>
+            <p>by Andrew</p>
+            <small>Released: May 2025</small>
+            <audio controls>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+        <span class="release-tag new">🆕 New</span>
+        </div>
+
+        <!-- Track 2 - Eminem -->
+        <div class="release-card">
+        <img src="assets/newsinger2.jpg " alt="Eminem - Raw Cipher">
+        <div class="release-info">
+            <h3>Raw Cipher</h3>
+            <p>by Twinkle</p>
+            <small>Released: Apr 2025</small>
+            <audio controls>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+        <span class="release-tag top">🚀 Top Hit</span>
+        </div>
+
+        <!-- Track 3 - Taylor Swift -->
+        <div class="release-card">
+        <img src="assets/newsinger1.jpg" alt="Taylor Swift - Midnight Confession">
+        <div class="release-info">
+            <h3>Midnight Confession</h3>
+            <p>by Sandie</p>
+            <small>Released: Mar 2025</small>
+            <audio controls>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+        <span class="release-tag trend">🆕 New</span>
+        </div>
+
+        <!-- Track 3 - Taylor Swift -->
+        <div class="release-card">
+        <img src="assets/newsinger2.jpg" alt="Taylor Swift - Midnight Confession">
+        <div class="release-info">
+            <h3>Midnight Confession</h3>
+            <p>by Travis</p>
+            <small>Released: Mar 2025</small>
+            <audio controls>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+        <span class="release-tag trend">🔥 Trending</span>
+        </div>
+
+        <!-- Track 3 - Taylor Swift -->
+        <div class="release-card">
+        <img src="assets/newsinger1.jpg" alt="Taylor Swift - Midnight Confession">
+        <div class="release-info">
+            <h3>Midnight Confession</h3>
+            <p>by Jenny</p>
+            <small>Released: Mar 2025</small>
+            <audio controls>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+        <span class="release-tag trend">🚀 Top Hit</span>
+        </div>
+    </div>
+    </section>
+
+    <!-- 📞 CONTACT US -->
+    <section class="newsletter" id="newsletter">
+    <div class="newsletter-wrapper">
+        <div class="form-box">
+        <div class="form-side">
+            <h2>💌 Stay In The Loop</h2>
+            <p>Get the latest music drops, concert alerts, and exclusive merch straight to your inbox.</p>
+            <form class="newsletter-form">
+            <input type="email" placeholder="Enter your email..." required />
+            <button type="submit">Subscribe</button>
+            </form>
+        </div>
+
+        <div class="form-side">
+            <h2>📬 Get In Touch</h2>
+            <p>Questions? Suggestions? Drop us a message and we'll get back to you.</p>
+            <form class="contact-form">
+            <input type="text" name="name" placeholder="Your Name" required />
+            <input type="email" name="email" placeholder="Your Email" required />
+            <textarea name="message" rows="4" placeholder="Your Message..." required></textarea>
+            <button type="submit">Send</button>
+            </form>
+        </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Music_Icon.svg/2048px-Music_Icon.svg.png" alt="Logo" class="footer-logo-img" />
+      <h2>RhythmVerse</h2>
+      <p>Music. Merch. Magic. All in one beat.</p>
+    </div>
+
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#artists">Artists</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#merch">Merch</a></li>
+        <li><a href="#newsletter">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-social">
+      <h4>Connect</h4>
+      <div class="social-icons">
+        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://twitter.com" target="_blank"><i class="fab fa-x-twitter fa-twitter"></i></a>
+        <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://spotify.com" target="_blank"><i class="fab fa-spotify"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2025 RhythmVerse. All Rights Reserved.</p>
+  </div>
+</footer>
+
+    
+
+    <script>
+    // Cursor
+    const cursor = document.querySelector('.cursor');
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+    });
+
+    // Hero parallax
+    document.querySelector('.hero').addEventListener('mousemove', (e) => {
+        const x = (e.clientX - window.innerWidth / 2) * 0.01;
+        const y = (e.clientY - window.innerHeight / 2) * 0.01;
+        document.querySelector('.hero-content').style.transform = `translate(${x}px, ${y}px)`;
+    });
+
+    // Hamburger toggle
+    document.getElementById('hamburger').addEventListener('click', () => {
+        document.getElementById('navLinks').classList.toggle('active');
+    });
+
+    // Slideshow logic
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+        });
+    }
+
+    setInterval(() => {
+        current = (current + 1) % slides.length;
+        showSlide(current);
+    }, 5000); // 5 seconds interval
+
+      // Entrance Animation using IntersectionObserver
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+        });
+    }, {
+        threshold: 0.2
+    });
+
+    document.querySelectorAll('.artist-card').forEach(card => {
+        observer.observe(card);
+    });
+
+    // Audio Preview Toggle
+    document.querySelectorAll('.preview-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+        const audioId = btn.getAttribute('data-audio');
+        const audio = document.getElementById(audioId);
+        if (audio.hidden) {
+            audio.hidden = false;
+            audio.play();
+            btn.textContent = '⏸ Pause Preview';
+        } else {
+            audio.pause();
+            audio.hidden = true;
+            btn.textContent = '▶ Play Preview';
+        }
+        });
+    });
+
+    // Artist data for modal
+    const artistData = {
+        billie: {
+        img: 'assets/singer1.jpg',
+        name: 'Billie Eilish',
+        genre: 'Alternative | Pop',
+        bio: 'Grammy-winning artist known for her haunting vocals and atmospheric productions.',
+        link: 'https://www.billieeilish.com/'
+        },
+        eminem: {
+        img: 'assets/singer3.jpg',
+        name: 'Eminem',
+        genre: 'Hip-Hop | Rap',
+        bio: 'One of the greatest rappers of all time, known for his lyrical genius and raw energy.',
+        link: 'https://www.eminem.com/'
+        },
+        taylor: {
+        img: 'assets/singer2.jpg',
+        name: 'Taylor Swift',
+        genre: 'Pop | Indie | Country',
+        bio: 'Multi-genre artist celebrated for her storytelling and evolution in sound.',
+        link: 'https://www.taylorswift.com/'
+        }
+    };
+
+    // Modal Logic
+    const modal = document.getElementById('artist-modal');
+    const closeModal = document.querySelector('.close-modal');
+
+    document.querySelectorAll('.artist-card').forEach(card => {
+        card.addEventListener('click', () => {
+        const key = card.getAttribute('data-artist');
+        const data = artistData[key];
+
+        document.getElementById('modal-img').src = data.img;
+        document.getElementById('modal-name').textContent = data.name;
+        document.getElementById('modal-genre').textContent = data.genre;
+        document.getElementById('modal-bio').textContent = data.bio;
+        document.getElementById('modal-link').href = data.link;
+
+        modal.classList.remove('hidden');
+        });
+    });
+
+    closeModal.addEventListener('click', () => {
+        modal.classList.add('hidden');
+    });
+    // Animate video cards on scroll
+    document.querySelectorAll('.video-card').forEach(card => {
+        observer.observe(card); // reuse same IntersectionObserver
+    });
+
+    // Animate event cards on scroll
+    document.querySelectorAll('.event-card').forEach(card => {
+    observer.observe(card);
+    });
+
+    </script>
+
+
+</body>
+</html>
