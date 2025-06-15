@@ -58,6 +58,11 @@ body, html {
   text-shadow: 0 0 6px var(--neon);
 }
 
+.header-logo-img {
+  width: 50px;
+  filter: drop-shadow(0 0 5px var(--neon));
+}
+
 /* Nav links */
 .nav-links {
   list-style: none;
@@ -1287,7 +1292,7 @@ body, html {
 }
 
 .footer-logo-img {
-  width: 60px;
+  width: 100px;
   margin-bottom: 0.5rem;
   filter: drop-shadow(0 0 5px var(--neon));
 }
