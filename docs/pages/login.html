@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RhythmicVibe Auth</title>
+  <link rel="stylesheet" href="login.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+  <div class="container">
+    <!-- Left Music Panel -->
+    <div class="left-panel">
+      <div class="overlay">
+        <h1>RhythmicVibe</h1>
+        <p id="slogan"></p>
+      </div>
+    </div>
+
+    <!-- Right Side - Forms -->
+    <div class="auth-form-container">
+      <div class="form-header">
+        <h2>RhythmicVibe Connect</h2>
+      </div>
+
+      <div class="form-toggle">
+        <button class="toggle-btn active" onclick="showForm('login')">Login</button>
+        <button class="toggle-btn" onclick="showForm('signup')">Sign Up</button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="login-form" class="auth-form active">
+        <div class="form-group">
+          <label for="login-email">Email</label>
+          <input type="email" id="login-email" class="form-control" placeholder="your@email.com" required />
+        </div>
+
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" class="form-control" placeholder="••••••••" required />
+        </div>
+
+        <button type="submit" class="submit-btn">Login</button>
+
+        <div class="form-footer">
+          <a href="#">Forgot password?</a>
+        </div>
+      </form>
+
+      <!-- Signup Form -->
+      <form id="signup-form" class="auth-form">
+        <div class="form-group">
+          <label for="signup-fname">First Name</label>
+          <input type="text" id="signup-fname" class="form-control" placeholder="John" required />
+        </div>
+
+        <div class="form-group">
+          <label for="signup-lname">Last Name</label>
+          <input type="text" id="signup-lname" class="form-control" placeholder="Doe" required />
+        </div>
+
+        <div class="form-group">
+          <label for="signup-email">Email</label>
+          <input type="email" id="signup-email" class="form-control" placeholder="your@email.com" required />
+        </div>
+
+        <div class="form-group">
+          <label for="signup-contact">Contact Number</label>
+          <input type="tel" id="signup-contact" class="form-control" placeholder="e.g., +91 9876543210" required />
+        </div>
+
+        <div class="form-group">
+          <label for="signup-dob">Date of Birth</label>
+          <input type="date" id="signup-dob" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+          <label for="signup-password">Password</label>
+          <input type="password" id="signup-password" class="form-control" placeholder="••••••••" required />
+        </div>
+
+        <div class="form-group">
+          <label for="signup-confirm">Confirm Password</label>
+          <input type="password" id="signup-confirm" class="form-control" placeholder="••••••••" required />
+        </div>
+
+        <button type="submit" class="submit-btn">Create Account</button>
+
+        <div class="form-footer">
+          Already have an account?
+          <a href="#" onclick="showForm('login')">Login</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const slogans = [
+      "Where Beats Become Magic...",
+      "Your Sound. Your Space.",
+      "Record. Mix. Master... Repeat."
+    ];
+    let sIndex = 0, cIndex = 0;
+    const sloganEl = document.getElementById('slogan');
+
+    function type() {
+      if (cIndex < slogans[sIndex].length) {
+        sloganEl.textContent += slogans[sIndex][cIndex++];
+        setTimeout(type, 80);
+      } else {
+        setTimeout(() => {
+          sloganEl.textContent = '';
+          cIndex = 0;
+          sIndex = (sIndex + 1) % slogans.length;
+          type();
+        }, 2000);
+      }
+    }
+    type();
+
+    // Toggle forms
+    function showForm(type) {
+      document.getElementById('login-form').classList.remove('active');
+      document.getElementById('signup-form').classList.remove('active');
+      document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
+
+      if (type === 'login') {
+        document.getElementById('login-form').classList.add('active');
+        document.querySelector('.toggle-btn:nth-child(1)').classList.add('active');
+      } else {
+        document.getElementById('signup-form').classList.add('active');
+        document.querySelector('.toggle-btn:nth-child(2)').classList.add('active');
+      }
+    }
+
+    // Declare visualIndicator element (make sure this exists in your HTML)
+      const visualIndicator = document.getElementById("visual-indicator");
+
+      // Form toggle function - pass event to get event.target
+      function showForm(formType, event) {
+        // Toggle buttons active state
+        document
+          .querySelectorAll(".toggle-btn")
+          .forEach((btn) => btn.classList.remove("active"));
+        if (event) event.target.classList.add("active");
+
+        // Toggle forms
+        document
+          .querySelectorAll(".auth-form")
+          .forEach((form) => form.classList.remove("active"));
+        document.getElementById(formType + "-form").classList.add("active");
+
+        // Update welcome message
+        updateWelcomeMessage(formType);
+      }
+
+      // Welcome message and visual indicator update
+      function updateWelcomeMessage(formType) {
+        const title = document.getElementById("welcome-title");
+        const text = document.getElementById("welcome-text");
+
+        if (formType === "login") {
+          title.textContent = "Welcome Back";
+          text.textContent =
+            "Access your RhythmicVibe dashboard to continue optimizing your business performance.";
+          if (visualIndicator) visualIndicator.innerHTML = ""; // Clear for login
+        } else {
+          title.textContent = "Begin Your Transformation";
+          text.textContent =
+            "Join Illuminant Vitam to unlock data-driven strategies that illuminate your business potential.";
+          if (visualIndicator) {
+            visualIndicator.innerHTML = `
+          <div style="display: flex; align-items: center; width: 100%;">
+            <div style="width: 40px; height: 3px; background-color: #d4af37;"></div>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="#d4af37" style="margin: 0 10px; animation: pulse 2s infinite;">
+              <path d="M5 12h14M12 5l7 7-7 7" stroke="#d4af37" stroke-width="2" fill="none"></path>
+            </svg>
+            <div style="width: 40px; height: 3px; background-color: #d4af37;"></div>
+          </div>
+        `;
+          }
+        }
+      }
+
+      // Add pulse animation for arrow (keep it only once)
+      document.head.insertAdjacentHTML(
+        "beforeend",
+        `
+    <style>
+      @keyframes pulse {
+        0% { transform: translateX(0); }
+        50% { transform: translateX(5px); }
+        100% { transform: translateX(0); }
+      }
+    </style>
+  `
+      );
+
+      // Login form submission handler
+      document
+        .getElementById("login-form")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          const email = document.getElementById("login-email").value.trim();
+          const password = document.getElementById("login-password").value;
+
+          try {
+            const response = await fetch(
+              "http://localhost:8000/api/auth/login",
+              {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password }),
+              }
+            );
+
+            const data = await response.json();
+
+            if (response.ok) {
+              alert("Login Successful!");
+              localStorage.setItem("accessToken", data.accessToken);
+               window.location.href = "dashboard.html";
+            } else {
+              alert(data.message || "Login failed.");
+            }
+          } catch (err) {
+            alert("Error connecting to server.");
+            console.error(err);
+          }
+        });
+
+      // Signup form submission handler (only one)
+      document
+        .getElementById("signup-form")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          const firstName = document
+            .getElementById("signup-fname")
+            .value.trim();
+          const lastName = document.getElementById("signup-lname").value.trim();
+          const email = document.getElementById("signup-email").value.trim();
+          const dob = document.getElementById("signup-dob").value;
+          const password = document.getElementById("signup-password").value;
+          const confirmPassword =
+            document.getElementById("signup-confirm").value;
+          const contactNumber = document
+            .getElementById("signup-contact")
+            .value.trim();
+
+          if (password !== confirmPassword) {
+            alert("Passwords do not match!");
+            return;
+          }
+
+          try {
+            const response = await fetch(
+              "http://localhost:8000/api/auth/signup",
+              {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  firstName,
+                  lastName,
+                  email,
+                  dob,
+                  password,
+                  confirmPassword,
+                  contactNumber,
+                }),
+              }
+            );
+
+            const data = await response.json();
+
+            if (response.ok) {
+              alert("Signup Successful!");
+              showForm("login");
+            } else {
+              alert(data.message || "Signup failed.");
+            }
+          } catch (err) {
+            alert("Error connecting to server.");
+            console.error(err);
+          }
+        });
+  </script>
+</body>
+</html>

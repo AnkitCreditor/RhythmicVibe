@@ -99,6 +99,26 @@ body, html {
   width: 100%;
 }
 
+/* Special styling for Login/Signup button */
+.nav-links .login-box a {
+  background-color: #ffd700; /* Bright yellow */
+  color: #000; /* Black text */
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+}
+
+.nav-links .login-box a:hover {
+  background-color: #e6c200; /* Darker yellow */
+  color: #111;
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
+}
+
+.nav-links .login-box a {
+  text-shadow: 0 0 5px #fff;
+}
+
 /* Hamburger menu (mobile) */
 .hamburger {
   display: none;

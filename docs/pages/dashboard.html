@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Dashboard | RhythmicVibe</title>
+  <link rel="stylesheet" href="dashboard.css"/>
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
+  <script src="https://kit.fontawesome.com/a2d9d5c56f.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">🎵 RhythmicVibe</div>
+      <ul class="sidebar-menu">
+  <li data-section="profile" class="active">Profile</li>
+  <li data-section="bookings">Bookings</li>
+  <li data-section="tracks">Uploaded Tracks</li>
+  <li data-section="services">Service Usage</li>
+  <li data-section="merch">Merchandise</li>
+  <li onclick="confirmLogout()">Logout</li>
+</ul>
+
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+      <header class="dashboard-header">
+        <h1>Howdy, Ankit 🎧</h1>
+        <p>Your creative zone awaits!</p>
+      </header>
+
+<section id="profile" class="dashboard-section">
+  <div class="profile-header">
+    <h2>Profile Overview</h2>
+  </div>
+
+  <div class="profile-card">
+    <div class="avatar-section">
+      <label for="avatarUpload">
+        <img id="avatarImage" src="https://i.imgur.com/0y0y0y0.png" alt="User Avatar" />
+        <input type="file" id="avatarUpload" accept="image/*" hidden />
+      </label>
+    </div>
+
+    <div class="profile-details">
+        <input type="text" id="userName" placeholder="Name" value="Ankit Sharma" disabled />
+        <input type="email" id="userEmail" placeholder="Email" value="ankit@example.com" disabled />
+        <p>Member Since: <span id="userSince">Jun 2024</span></p>
+
+        <button id="editBtn">Edit</button>
+        <button id="saveBtn" style="display:none;">Save</button>
+    </div>
+
+</section>
+
+
+<section id="bookings" class="dashboard-section hidden">
+  <div class="bookings-header">
+    <h2 class="section-title">
+      <i class="fas fa-calendar-check"></i> Bookings
+    </h2>
+
+    <!-- Filter Dropdown -->
+    <div class="booking-filter">
+      <label for="bookingFilter">Filter:</label>
+      <select id="bookingFilter" onchange="filterBookings()">
+        <option value="all">All</option>
+        <option value="upcoming">Upcoming</option>
+        <option value="completed">Completed</option>
+        <option value="cancelled">Cancelled</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="bookings-grid" id="bookingGrid">
+    <!-- Booking Card 1 -->
+    <div class="booking-card booking-type-recording fade-in" data-status="upcoming">
+      <div class="booking-icon"><i class="fas fa-microphone-alt"></i></div>
+      <div class="booking-details">
+        <h3>Recording Studio</h3>
+        <span class="badge badge-pink">Upcoming</span>
+        <p><strong>Date:</strong> 12 June 2025</p>
+        <p><strong>Time:</strong> 2:00 PM - 5:00 PM</p>
+        <p><strong>Status:</strong> Confirmed</p>
+      </div>
+    </div>
+
+    <!-- Booking Card 2 -->
+    <div class="booking-card booking-type-video fade-in" data-status="completed">
+      <div class="booking-icon"><i class="fas fa-video"></i></div>
+      <div class="booking-details">
+        <h3>Music Video Shoot</h3>
+        <span class="badge badge-blue">Completed</span>
+        <p><strong>Date:</strong> 02 May 2025</p>
+        <p><strong>Location:</strong> In-house Studio</p>
+        <p><strong>Status:</strong> Completed</p>
+      </div>
+    </div>
+
+    <!-- Booking Card 3 -->
+    <div class="booking-card booking-type-concert fade-in" data-status="cancelled">
+      <div class="booking-icon"><i class="fas fa-guitar"></i></div>
+      <div class="booking-details">
+        <h3>Concert Arrangement</h3>
+        <span class="badge badge-red">Cancelled</span>
+        <p><strong>Date:</strong> 22 March 2025</p>
+        <p><strong>Venue:</strong> Delhi Auditorium</p>
+        <p><strong>Status:</strong> Cancelled</p>
+      </div>
+    </div>
+
+    <!-- Booking Card 4 -->
+    <div class="booking-card booking-type-mix fade-in" data-status="completed">
+      <div class="booking-icon"><i class="fas fa-sliders-h"></i></div>
+      <div class="booking-details">
+        <h3>Mixing & Mastering</h3>
+        <span class="badge badge-green">Completed</span>
+        <p><strong>Date:</strong> 15 Feb 2025</p>
+        <p><strong>Engineer:</strong> Arjun Mehta</p>
+        <p><strong>Status:</strong> Completed</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="tracks" class="dashboard-section hidden">
+  <div class="tracks-header">
+    <h2 class="section-title"><i class="fas fa-music"></i> Uploaded Tracks</h2>
+    <button class="upload-btn"><i class="fas fa-cloud-upload-alt"></i> Upload New Track</button>
+  </div>
+
+  <div class="tracks-grid">
+    <!-- Track Card 1 -->
+    <div class="track-card fade-in">
+      <div class="track-info">
+        <i class="fas fa-headphones-alt track-icon"></i>
+        <div>
+          <h3>My First Beat.mp3</h3>
+          <p>Genre: Hip-Hop • Duration: 2:45</p>
+        </div>
+      </div>
+      <span class="badge badge-blue">Uploaded</span>
+    </div>
+
+    <!-- Track Card 2 -->
+    <div class="track-card fade-in">
+      <div class="track-info">
+        <i class="fas fa-wave-square track-icon"></i>
+        <div>
+          <h3>SynthWave2025.wav</h3>
+          <p>Genre: Synthwave • Duration: 3:21</p>
+        </div>
+      </div>
+      <span class="badge badge-blue">Uploaded</span>
+    </div>
+  </div>
+</section>
+
+
+<section id="services" class="dashboard-section hidden">
+  <h2 class="section-title"><i class="fas fa-cogs"></i> Used Services</h2>
+
+  <div class="service-cards">
+    <!-- Service 1 -->
+    <div class="service-card fade-in">
+      <div class="service-icon" style="background: #22c55e;">
+        <i class="fas fa-microphone-alt"></i>
+      </div>
+      <div class="service-details">
+        <h3>Recording Studio</h3>
+        <p>Used <strong>3</strong> times</p>
+      </div>
+    </div>
+
+    <!-- Service 2 -->
+    <div class="service-card fade-in">
+      <div class="service-icon" style="background: #6366f1;">
+        <i class="fas fa-video"></i>
+      </div>
+      <div class="service-details">
+        <h3>Music Video Shoot</h3>
+        <p>Used <strong>2</strong> times</p>
+      </div>
+    </div>
+
+    <!-- Service 3 -->
+    <div class="service-card fade-in">
+      <div class="service-icon" style="background: #f59e0b;">
+        <i class="fas fa-music"></i>
+      </div>
+      <div class="service-details">
+        <h3>Concerts Arrangement</h3>
+        <p>Used <strong>1</strong> time</p>
+      </div>
+    </div>
+
+    <!-- Service 4 -->
+    <div class="service-card fade-in">
+      <div class="service-icon" style="background: #ef4444;">
+        <i class="fas fa-guitar"></i>
+      </div>
+      <div class="service-details">
+        <h3>Live Jamming</h3>
+        <p>Used <strong>0</strong> times</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="merch" class="dashboard-section hidden">
+  <h2 class="section-title">
+    <i class="fas fa-box-open"></i> Merchandise Orders
+  </h2>
+
+  <div class="filter-row">
+    <label for="merch-filter">Filter:</label>
+    <select id="merch-filter" onchange="filterMerch()">
+      <option value="all">All</option>
+      <option value="delivered">Delivered</option>
+      <option value="in-transit">In Transit</option>
+      <option value="cancelled">Cancelled</option>
+    </select>
+  </div>
+
+  <div class="merch-list">
+    <div class="merch-card fade-in" data-status="delivered">
+      <div class="merch-icon">👕</div>
+      <div class="merch-info">
+        <h4>Rhythmic Tee</h4>
+        <p>Status: <span class="status delivered">Delivered</span></p>
+      </div>
+    </div>
+
+    <div class="merch-card fade-in" data-status="in-transit">
+      <div class="merch-icon">🎧</div>
+      <div class="merch-info">
+        <h4>Studio Headphones</h4>
+        <p>Status: <span class="status in-transit">In Transit</span></p>
+      </div>
+    </div>
+
+    <div class="merch-card fade-in" data-status="cancelled">
+      <div class="merch-icon">🧢</div>
+      <div class="merch-info">
+        <h4>Vibe Cap</h4>
+        <p>Status: <span class="status cancelled">Cancelled</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+    </main>
+  </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const menuItems = document.querySelectorAll(".sidebar-menu li");
+    const sections = document.querySelectorAll(".dashboard-section");
+
+    menuItems.forEach((item) => {
+      item.addEventListener("click", () => {
+        const sectionId = item.getAttribute("data-section");
+        const targetSection = document.getElementById(sectionId);
+
+        if (!sectionId || !targetSection) return;
+
+        // Hide all sections
+        sections.forEach((section) => section.classList.add("hidden"));
+
+        // Show selected section
+        targetSection.classList.remove("hidden");
+
+        // Update active class on sidebar
+        menuItems.forEach((el) => el.classList.remove("active"));
+        item.classList.add("active");
+
+        // Optional: Scroll to section smoothly
+        targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+  });
+
+  function filterMerch() {
+    const value = document.getElementById("merch-filter").value;
+    document.querySelectorAll(".merch-card").forEach(card => {
+        const status = card.dataset.status;
+        if (value === "all" || status === value) {
+        card.style.display = "flex";
+        } else {
+        card.style.display = "none";
+        }
+    });
+  }
+  function confirmLogout() {
+  if (confirm("Are you sure you want to logout?")) {
+    window.location.href = "../index.html"; // Redirect to the login page
+  }
+}
+</script>
+</body>
+</html>

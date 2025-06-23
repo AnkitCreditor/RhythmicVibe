@@ -1,0 +1,563 @@
+:root {
+  --dark: #0b1c30;
+  --accent: #f72585;
+  --bg: #111927;
+  --light: #f4f4f4;
+  --card: #1e293b;
+  --subtle: #bbbbbb;
+  --glass: rgba(255, 255, 255, 0.05);
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--light);
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+  flex-wrap: wrap;
+}
+
+.sidebar {
+  width: 250px;
+  background: var(--dark);
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+.sidebar-logo {
+  font-size: 1.8rem;
+  color: var(--accent);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-menu li {
+  padding: 0.8rem 1rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.sidebar-menu li:hover,
+.sidebar-menu li.active {
+  background: var(--accent);
+  color: #fff;
+}
+
+.dashboard-main {
+  flex: 1;
+  padding: 2rem;
+  min-width: 0;
+}
+
+.dashboard-header h1 {
+  font-size: 2rem;
+  color: var(--accent);
+}
+
+.dashboard-header p {
+  color: var(--subtle);
+  margin-bottom: 2rem;
+}
+
+.dashboard-section {
+  background: var(--card);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px #00000033;
+  animation: fadeIn 0.6s ease;
+}
+
+.dashboard-section h2 {
+  color: var(--accent);
+  margin-bottom: 1.2rem;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==== Profile Section ==== */
+.profile-card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  padding: 1.5rem;
+  border-radius: 16px;
+  gap: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.avatar-section {
+  flex-shrink: 0;
+  position: relative;
+}
+
+.avatar-section img {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--accent);
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.profile-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-details input {
+  background: transparent;
+  border: 1px solid var(--subtle);
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  margin-bottom: 0.8rem;
+  color: var(--light);
+  font-size: 1rem;
+}
+
+.profile-details p {
+  margin: 0.3rem 0;
+  color: var(--subtle);
+}
+
+.profile-details button {
+  width: fit-content;
+  padding: 0.5rem 1.2rem;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.profile-details button:hover {
+  opacity: 0.85;
+}
+
+#themeToggle {
+  font-size: 1.4rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--light);
+  float: right;
+}
+
+/* ==== Booking & Services ==== */
+.booking-list,
+.service-usage {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+.bookings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.booking-filter label {
+  font-weight: 500;
+  margin-right: 0.5rem;
+  color: #ccc;
+}
+
+.booking-filter select {
+  background: #1e293b;
+  color: #fff;
+  border: 1px solid #333;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.fade-in {
+  animation: fadeSlide 0.6s ease forwards;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+@keyframes fadeSlide {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.bookings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.booking-card {
+  background: linear-gradient(to right, #1e1f2f, #2a2c3d);
+  padding: 1.5rem;
+  border-radius: 14px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+  color: #f1f1f1;
+  transition: transform 0.3s;
+  position: relative;
+}
+
+.booking-card:hover {
+  transform: translateY(-4px);
+}
+
+.booking-icon {
+  font-size: 2rem;
+  color: var(--accent);
+  margin-bottom: 0.8rem;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 0.25rem 0.6rem;
+  border-radius: 20px;
+  margin-bottom: 0.6rem;
+}
+
+.badge-pink { background: #ff89bb33; color: #ff5e9c; border: 1px solid #ff5e9c; }
+.badge-blue { background: #89d6ff33; color: #3fbfff; border: 1px solid #3fbfff; }
+.badge-red { background: #ff5e5e22; color: #ff4444; border: 1px solid #ff4444; }
+.badge-green { background: #78e68b22; color: #36c569; border: 1px solid #36c569; }
+
+.booking-type-recording { border-left: 5px solid #ff5e9c; }
+.booking-type-video { border-left: 5px solid #3fbfff; }
+.booking-type-concert { border-left: 5px solid #ff4444; }
+.booking-type-mix { border-left: 5px solid #36c569; }
+
+.booking-details p {
+  margin: 0.3rem 0;
+}
+
+
+@media (max-width: 600px) {
+  .bookings-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.empty-state {
+  text-align: center;
+  padding: 2rem;
+  border: 2px dashed #444;
+  border-radius: 12px;
+  color: #888;
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.empty-state i {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--accent);
+}
+
+.track-card,
+.merch-card {
+  background: #29394d;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  color: #ddd;
+}
+
+.tracks,
+.merch-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.tracks-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.upload-btn {
+  background: var(--accent);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.upload-btn:hover {
+  background: #d91e6f;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.tracks-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.track-card {
+  background: linear-gradient(135deg, #243447, #1e293b);
+  padding: 1rem 1.2rem;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-left: 4px solid var(--accent);
+}
+
+.track-card:hover {
+  transform: scale(1.01);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+.track-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.track-icon {
+  font-size: 1.6rem;
+  color: var(--accent);
+}
+
+.badge {
+  padding: 0.3rem 0.8rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.badge-pink {
+  background: #f72585;
+  color: #fff;
+}
+
+.badge-blue {
+  background: #3b82f6;
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  .track-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+
+  .tracks-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.service-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1.5rem;
+}
+
+.service-card {
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  border-radius: 16px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 10px #00000022;
+  animation: fadeInUp 0.6s ease forwards;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.service-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+.service-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-size: 1.4rem;
+}
+
+.service-details h3 {
+  margin: 0 0 0.3rem 0;
+  font-size: 1.2rem;
+  color: var(--light);
+}
+
+.service-details p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #bbbbbb;
+}
+
+@keyframes fadeInUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.filter-row {
+  margin-bottom: 1.2rem;
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  color: #ddd;
+}
+
+.filter-row select {
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  border: none;
+  background: #273649;
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+}
+
+.merch-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: linear-gradient(135deg, #2d3d5a, #1f2937);
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  animation: fadeIn 0.5s ease forwards;
+  border-left: 6px solid transparent;
+  transition: transform 0.3s ease;
+}
+
+.merch-card:hover {
+  transform: scale(1.02);
+}
+
+.merch-icon {
+  font-size: 2rem;
+}
+
+.merch-info h4 {
+  margin: 0;
+  color: var(--accent);
+}
+
+.status {
+  font-weight: bold;
+}
+
+.status.delivered {
+  color: #00ff7f;
+}
+
+.status.in-transit {
+  color: #ffcc00;
+}
+
+.status.cancelled {
+  color: #ff4d4d;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* ==== Responsive ==== */
+@media (max-width: 768px) {
+  .dashboard-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 1rem;
+  }
+
+  .sidebar-menu {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .dashboard-main {
+    padding: 1rem;
+  }
+
+  .profile-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .profile-details input {
+    width: 100%;
+  }
+}
