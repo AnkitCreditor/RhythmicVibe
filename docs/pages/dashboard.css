@@ -23,12 +23,18 @@ body {
 }
 
 .sidebar {
+  position: fixed;                /* Fixed to left */
+  top: 0;
+  left: 0;
   width: 250px;
+  height: 100vh;                  /* Full viewport height */
   background: var(--dark);
   padding: 2rem 1rem;
   display: flex;
   flex-direction: column;
   transition: all 0.3s ease;
+  overflow-y: auto;              /* Scroll if content overflows */
+  z-index: 1000;
 }
 
 .sidebar-logo {
@@ -41,6 +47,7 @@ body {
 .sidebar-menu {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .sidebar-menu li {
@@ -48,6 +55,7 @@ body {
   margin-bottom: 1rem;
   cursor: pointer;
   border-radius: 8px;
+  color: var(--light);            /* Ensures contrast */
   transition: background 0.3s ease, color 0.3s ease;
 }
 
@@ -59,6 +67,7 @@ body {
 
 .dashboard-main {
   flex: 1;
+  margin-left: 300px;  
   padding: 2rem;
   min-width: 0;
 }
@@ -71,6 +80,87 @@ body {
 .dashboard-header p {
   color: var(--subtle);
   margin-bottom: 2rem;
+}
+
+.dashboard-banner {
+  position: relative;
+  background: url('../assets/banner.jpg') center/cover no-repeat;
+  border-radius: 16px;
+  padding: 4rem 2rem;
+  margin-bottom: 2rem;
+  color: var(--light);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 150px;
+}
+
+/* Blue overlay */
+.dashboard-banner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 123, 255, 0.3); /* Semi-transparent blue overlay */
+  z-index: 1;
+  border-radius: 16px;
+}
+
+/* Content inside the banner */
+.banner-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  width: 100%;
+}
+
+.text-block {
+  flex: 1;
+  min-width: 260px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.text-block h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.text-block p {
+  font-size: 1.1rem;
+  color: #e0e0e0;
+}
+
+/* Remove image section */
+.banner-art {
+  display: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dashboard-banner {
+    padding: 3rem 1.5rem;
+    min-height: 200px;
+  }
+
+  .text-block h1 {
+    font-size: 1.8rem;
+  }
+
+  .text-block p {
+    font-size: 1rem;
+  }
 }
 
 .dashboard-section {
