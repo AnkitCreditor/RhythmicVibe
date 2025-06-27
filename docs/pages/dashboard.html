@@ -36,28 +36,66 @@
 
 <section id="profile" class="dashboard-section">
   <div class="profile-header">
-    <h2>Profile Overview</h2>
+    <h2>Profile Settings</h2>
+    <p>Manage your account information and preferences</p>
   </div>
 
-  <div class="profile-card">
-    <div class="avatar-section">
-      <label for="avatarUpload">
-        <img id="avatarImage" src="https://i.imgur.com/0y0y0y0.png" alt="User Avatar" />
+  <div class="profile-container">
+    <!-- Profile Picture Section -->
+    <div class="profile-picture-box">
+      <h3>Profile Picture</h3>
+      <p>Update your profile photo</p>
+      <img id="avatarImage" src="../assets/profile.jpg" alt="User Avatar" />
+      <div class="avatar-buttons">
+        <button id="uploadBtn" class="disabled-btn" disabled>Upload Image</button>
+        <button id="avatarSelectBtn" class="disabled-btn" disabled>Choose Avatar</button>
         <input type="file" id="avatarUpload" accept="image/*" hidden />
-      </label>
+      </div>
+      <div id="avatarGallery" class="avatar-gallery" style="display: none;">
+        <!-- Avatars -->
+        <img src="https://i.pravatar.cc/100?img=1" />
+        <img src="https://i.pravatar.cc/100?img=2" />
+        <img src="https://i.pravatar.cc/100?img=3" />
+        <img src="https://i.pravatar.cc/100?img=4" />
+        <img src="https://i.pravatar.cc/100?img=5" />
+        <img src="https://i.pravatar.cc/100?img=6" />
+        <img src="https://i.pravatar.cc/100?img=7" />
+        <img src="https://i.pravatar.cc/100?img=8" />
+        <img src="https://i.pravatar.cc/100?img=9" />
+        <img src="https://i.pravatar.cc/100?img=10" />
+      </div>
     </div>
 
-    <div class="profile-details">
-        <input type="text" id="userName" placeholder="Name" value="Ankit Sharma" disabled />
-        <input type="email" id="userEmail" placeholder="Email" value="ankit@example.com" disabled />
-        <p>Member Since: <span id="userSince">Jun 2024</span></p>
+    <!-- Personal Information Section -->
+    <div class="personal-info-box">
+      <h3>Personal Information</h3>
+      <p>Update your personal details</p>
+      <form id="profileForm">
+        <div class="field-row">
+          <input type="text" id="firstName" placeholder="First Name" value="John" disabled />
+          <input type="text" id="lastName" placeholder="Last Name" value="Doe" disabled />
+        </div>
+        <input type="email" id="email" placeholder="Email Address" value="john@example.com" disabled />
+        <div class="field-row">
+          <input type="tel" id="phone" placeholder="Phone Number" value="+1 (555) 123-4567" disabled />
+          <input type="text" id="company" placeholder="Company" value="Tech Innovations Inc." disabled />
+        </div>
+        <input type="text" id="position" placeholder="Position" value="CEO" disabled />
+        <input type="text" id="address" placeholder="Address" value="123 Business Ave, Suite 100" disabled />
+        <div class="field-row">
+          <input type="text" id="city" placeholder="City" value="New York" disabled />
+          <input type="text" id="state" placeholder="State" value="NY" disabled />
+          <input type="text" id="zip" placeholder="ZIP Code" value="10001" disabled />
+        </div>
 
-        <button id="editBtn">Edit</button>
-        <button id="saveBtn" style="display:none;">Save</button>
+        <div class="action-buttons">
+          <button type="button" id="editBtn">Edit</button>
+          <button type="submit" id="saveBtn" style="display:none;">💾 Save Changes</button>
+        </div>
+      </form>
     </div>
-
+  </div>
 </section>
-
 
 <section id="bookings" class="dashboard-section hidden">
   <div class="bookings-header">
@@ -303,6 +341,92 @@
     window.location.href = "../index.html"; // Redirect to the login page
   }
 }
+const form = document.getElementById('profileForm');
+const editBtn = document.getElementById('editBtn');
+const saveBtn = document.getElementById('saveBtn');
+const avatarUpload = document.getElementById('avatarUpload');
+const avatarGallery = document.getElementById('avatarGallery');
+const uploadBtn = document.getElementById('uploadBtn');
+const avatarSelectBtn = document.getElementById('avatarSelectBtn');
+const avatarImage = document.getElementById('avatarImage');
+const defaultAvatar = 'images/default-avatar.png'; // Or any placeholder URL
+
+avatarImage.onerror = () => {
+  avatarImage.src = defaultAvatar;
+};
+
+// Optional: Set fallback on page load
+if (!avatarImage.src || avatarImage.src.trim() === '') {
+  avatarImage.src = defaultAvatar;
+}
+
+
+
+const fields = form.querySelectorAll('input');
+let isEditing = false; // track edit state
+
+// Enable Edit Mode
+editBtn.addEventListener('click', () => {
+  fields.forEach(field => field.disabled = false);
+  editBtn.style.display = 'none';
+  saveBtn.style.display = 'inline-block';
+  isEditing = true;
+
+  // Enable buttons visually
+  uploadBtn.disabled = false;
+  avatarSelectBtn.disabled = false;
+  uploadBtn.classList.remove('disabled-btn');
+  avatarSelectBtn.classList.remove('disabled-btn');
+});
+
+// Save and Disable
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  fields.forEach(field => field.disabled = true);
+  editBtn.style.display = 'inline-block';
+  saveBtn.style.display = 'none';
+  isEditing = false;
+
+  // Disable avatar features again
+  uploadBtn.disabled = true;
+  avatarSelectBtn.disabled = true;
+  avatarGallery.style.display = 'none';
+  uploadBtn.classList.add('disabled-btn');
+  avatarSelectBtn.classList.add('disabled-btn');
+
+  console.log("Temporary save:", [...fields].map(f => ({ [f.id]: f.value })));
+});
+
+// Handle Upload Click
+uploadBtn.onclick = () => {
+  if (isEditing) avatarUpload.click();
+};
+
+// On Image Upload
+avatarUpload.addEventListener('change', e => {
+  if (!isEditing) return;
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => avatarImage.src = e.target.result;
+  reader.readAsDataURL(file);
+});
+
+// Toggle Avatar Gallery
+avatarSelectBtn.onclick = () => {
+  if (!isEditing) return;
+  avatarGallery.style.display = avatarGallery.style.display === 'none' ? 'flex' : 'none';
+};
+
+// Choose Avatar
+document.querySelectorAll('#avatarGallery img').forEach(img => {
+  img.addEventListener('click', () => {
+    if (!isEditing) return;
+    avatarImage.src = img.src;
+    avatarGallery.style.display = 'none';
+  });
+});
+
 </script>
 </body>
 </html>
