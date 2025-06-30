@@ -10,7 +10,8 @@ const allowedOrigins = [
   "http://127.0.0.1:5500",
   "http://localhost:5500",
   "http://127.0.0.1:5500/docs" ,
-  "https://princliv.github.io/RhythmicVibe/index.html"
+  "https://princliv.github.io/RhythmicVibe/index.html",
+  "https://rhythmic-vibe.vercel.app"
   // Optional, include if you're serving from here
 ];
 
